@@ -109,6 +109,35 @@ for (const person in vals) {
 	}
 }
 
+const emojis = ["❤️", "🎉", "🎊"];
+
+function createEmoji() {
+	const emoji = document.createElement("div");
+	emoji.classList.add("emoji");
+	
+	emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+	
+	// Random horizontal start
+	emoji.style.left = Math.random() * 100 + "vw";
+	
+	// Random size
+	emoji.style.fontSize = (20 + Math.random() * 40) + "px";
+	
+	// Random duration
+	const duration = 5 + Math.random() * 5;
+	emoji.style.animationDuration = duration + "s";
+	
+	document.body.appendChild(emoji);
+	
+	// Remove after animation
+	setTimeout(() => {
+		emoji.remove();
+	}, duration * 1000);
+}
+
+// Create emojis continuously
+setInterval(createEmoji, 500);
+
 if (!personFound) {
 	const body = document.body;
 	const main = document.querySelector('main');
